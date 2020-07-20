@@ -12,10 +12,10 @@ Install Hugo:
 
 #### Clone this repo:
 From wherever you checkout repos:
-`git clone https://github.com/Kervin-AWS/workshop-IOT_Simulator.git` (or your fork)
+`git clone https://github.com/Kervin-AWS/workshop-cvra.git` (or your fork)
 
 #### Clone the theme submodule:
-`cd workshop-IOT_Simulator`
+`cd workshop-cvra`
 
 `git submodule init` ;
 `git submodule update`

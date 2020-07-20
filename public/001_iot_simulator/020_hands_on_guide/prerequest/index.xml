@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>准备工作 on Amazon EKS Workshop</title>
+    <link>/001_iot_simulator/020_hands_on_guide/prerequest/</link>
+    <description>Recent content in 准备工作 on Amazon EKS Workshop</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 03 Oct 2018 10:17:52 -0700</lastBuildDate>
+    
+	<atom:link href="/001_iot_simulator/020_hands_on_guide/prerequest/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>创建认证</title>
+      <link>/001_iot_simulator/020_hands_on_guide/prerequest/authing/</link>
+      <pubDate>Wed, 03 Oct 2018 10:18:20 -0700</pubDate>
+      
+      <guid>/001_iot_simulator/020_hands_on_guide/prerequest/authing/</guid>
+      <description>需要注册申请 Authing 账户
+需要在 https://authing.cn/ 进行新账户的注册申请。
+新建用户池 当注册成功并进入 Authing.cn 后，点击左侧菜单栏中的 【用户池列表&amp;gt;新建用户池】 菜单。 根据下列示例信息创建新的用户池。请注意填写一个唯一的用户池名称。有可能有的用户池名称已经被占用。
+用户池名称： iotsimulation
+用户池域名： iotsimulation
+选择你的用户池类型： Web-Web Application
+具体截图如下：
+新建第三方登录-OIDC 应用 新建用户池后，进入用户池(例如：iot-simulation)。选择 “第三方登录”-&amp;gt;“OIDC 应用菜单” -&amp;gt;“创建 OIDC 应用”
+具体字段填写信息如下：
+应用名：输入自定义的应用名称（例如： iotsimulation） 认证地址：输入自定义的应用名称（例如： iotsimulation） 回调地址 URL：输入 &amp;ldquo; http://127.0.0.1:4200 &amp;ldquo;。 请注意，该值会在 IoT device Simulator 部署后会使用 Cloudformation 的输出值进行替换，如果不替换，将无法实现用户认证成功后系统自动跳转的功能。
+ 授权模式：选择 authorization_code, refresh_token, authingToken 单选框。 返回类型：选择 Code 单选框 Token 换取时认证方式： 选择 Client_secret_post 单选框。 id_token 签名算法： 选择 RS256 单选框。 高级选项 》 自定义 RSA 签名密钥， 点击随机生成签名密钥。例如 其他值保持默认值，点击 “确定” 按钮。</description>
+    </item>
+    
+    <item>
+      <title>获取 Mapbox Token</title>
+      <link>/001_iot_simulator/020_hands_on_guide/prerequest/mapboxtoken/</link>
+      <pubDate>Wed, 03 Oct 2018 10:21:11 -0700</pubDate>
+      
+      <guid>/001_iot_simulator/020_hands_on_guide/prerequest/mapboxtoken/</guid>
+      <description>关于汽车在地图上位置的实时更新功能也是本模块所具有的功能，所使用的地图是利用 Mapbox 所提供的服务。 该功能的前提需要您注册一个免费的 Mapbox 开发人员帐户，并获得 访问令牌 (Access Token)。
+申请新账户链接 请到如下的网站进行账户的开通 https://account.mapbox.com/auth/signin/
+获得 Access Token 新账户申请成功后，需要创建新的 Access Token, 具体操作如图所示。 并获得访问 Mapx 服务的 Token，例如 pk.eyJ1IjoiY2h1bmh1YXYiLCJhIjoiY2s2OHo3xxxxxxxxxbjNkeWZwYjQ4dSJ9.nDexx xxxxxxxx</description>
+    </item>
+    
+  </channel>
+</rss>

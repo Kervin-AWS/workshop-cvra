@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AWS 车联网实验 on Amazon EKS Workshop</title>
+    <link>/002_cvra/</link>
+    <description>Recent content in AWS 车联网实验 on Amazon EKS Workshop</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="/002_cvra/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+  </channel>
+</rss>

@@ -1,0 +1,169 @@
+[
+{
+	"uri": "/",
+	"title": "AWS 车联网实验",
+	"tags": [],
+	"description": "",
+	"content": "  AWS 车联网实验 本实验指南讨论了在云上部署车辆联网注意事项和配置步骤。\n 创建车辆设备模拟器   AWS 车联网实验   "
+},
+{
+	"uri": "/001_iot_simulator/020_hands_on_guide/prerequest/",
+	"title": "准备工作",
+	"tags": [],
+	"description": "",
+	"content": "在使用 CloudFormation 进行部署前，需要提前准备如下两项工作:\n 创建认证   获取 Mapbox Token   "
+},
+{
+	"uri": "/002_cvra/040_hands_on_guide/041_prerequest/",
+	"title": "准备工作",
+	"tags": [],
+	"description": "",
+	"content": " 准备用于 OIDC（OpenID Connect） 的 JWT token 加密及验证的字符串 为了确保系统安全，建议使用包含随机字符的字符串作为OIDC的加密密钥。可使用如下的bash脚本生成 包含32 位随机字符的字符串，该字符串将用加密 JWT Token 及用于API请求时密码比对。 示例命令如下：\ncat /dev/urandom | LC_CTYPE=C tr -dc a-z-0-9 | head -c${1:-32} ;echo  返回随机字符串示例： a1ef50c2e6a5e31f0f5ddc4a8f0fad41\n准备用于 API Gateway测试的 Restful API 工具 该解决方案部署完成后，只是提供了 API Gateway 服务接口及 DynamoDB 表 S3 存储桶等数据存储服务。而没有提供一个可视化的界面供用户使用。另外由于 API Gateway 提供相关服务导出为 Swagger 或 OpenAPI3 接口文件，可以借助于 Postman 或 Swagger UI ( https://swagger.io/tools/swagger-ui/ )这两款免费的API 调用工具供使用。 借助于这两种工具，方便您测试及验证功能使用。\n准备 Docker 环境，并拉取 Swagger-ui 镜像 如果想使用 Swagger UI 的 Docker 版本进行测试，需提前准备好 Docker 运行环境并获得镜像(swaggerapi/swagger-ui)。具体命令如下：\ndocker pull swaggerapi/swagger-ui  具体步骤，参考该文档 https://swagger.io/docs/open-source-tools/swagger-ui/usage/installation/\n"
+},
+{
+	"uri": "/001_iot_simulator/010_introduction/",
+	"title": "系统架构",
+	"tags": [],
+	"description": "",
+	"content": " 系统架构 架构图与资源\n欢迎来到AWS IOT模拟解决方案 Workshop!\n该解决方案提供了基于 Web 的图形用户界面（GUI）控制台，使您能够创建和模拟数百个连接的设备，而无需配置和管理物理设备或开发耗时的脚本。\n该解决方案旨在开箱即用，或者可以将此解决方案用作参考架构实现，以针对特定的使用场景构建自定义仿真引擎。\n该解决方案提供了一个控制台，使用户可以以用户定义的设备类型构建大量虚拟设备，并模拟将数据定时发布到物联网平台的场景。\n您还可以使用该模拟器进行设备的监控，并能详细地观察到后端其它服务如何处理相关数据。\n我们将从以下几个方面展开：  架构描述   组件介绍   "
+},
+{
+	"uri": "/002_cvra/030_introduction/",
+	"title": "系统架构",
+	"tags": [],
+	"description": "",
+	"content": " 系统架构 本方案可以将AWS物联网与其他AWS服务结合起来，构建事件驱动的应用程序，记录车辆实时位置数据，根据车辆故障码，监控汽车健康状况，并及时通知车主。\n下图展示了您可以按照解决方案实施指南并利用随附的 AWS CloudFormation 模板来构建的组件和功能。\n我们将从以下几个方面展开：\n 架构描述   组件介绍   "
+},
+{
+	"uri": "/001_iot_simulator/",
+	"title": "创建车辆设备模拟器",
+	"tags": [],
+	"description": "",
+	"content": " 部署说明 本章节将逐步带领您基于AWS IOT服务创建车辆设备模拟器。\n我们将分别从以下步骤进行部署：\n 系统架构   部署说明   "
+},
+{
+	"uri": "/001_iot_simulator/020_hands_on_guide/",
+	"title": "部署说明",
+	"tags": [],
+	"description": "",
+	"content": " 部署说明 本章节将逐步带领您实现AWS 物联网模拟器解决方案的部署。\n我们将分别从以下步骤进行部署：\n 准备工作   快速部署   系统使用   "
+},
+{
+	"uri": "/002_cvra/040_hands_on_guide/",
+	"title": "部署说明",
+	"tags": [],
+	"description": "",
+	"content": " 部署说明 本章节将逐步带领您实现AWS 物联网模拟器解决方案的部署。\n我们将分别从以下步骤进行部署：\n 准备工作   快速部署   数据存储及交互   系统使用   "
+},
+{
+	"uri": "/002_cvra/",
+	"title": "AWS 车联网实验",
+	"tags": [],
+	"description": "",
+	"content": " 车联网解决方案实验教程 本章节将逐步带领您基于s。\n本章节将逐步带领您基于上一章节中创建的车辆设备模拟器，进行车联网实验。\n我们将分别从以下步骤进行部署：\n 系统架构   部署说明   "
+},
+{
+	"uri": "/001_iot_simulator/020_hands_on_guide/prerequest/authing/",
+	"title": "创建认证",
+	"tags": [],
+	"description": "",
+	"content": " 需要注册申请 Authing 账户\n需要在 https://authing.cn/ 进行新账户的注册申请。\n新建用户池 当注册成功并进入 Authing.cn 后，点击左侧菜单栏中的 【用户池列表\u0026gt;新建用户池】 菜单。 根据下列示例信息创建新的用户池。请注意填写一个唯一的用户池名称。有可能有的用户池名称已经被占用。\n用户池名称： iotsimulation\n用户池域名： iotsimulation\n选择你的用户池类型： Web-Web Application\n具体截图如下：\n新建第三方登录-OIDC 应用 新建用户池后，进入用户池(例如：iot-simulation)。选择 “第三方登录”-\u0026gt;“OIDC 应用菜单” -\u0026gt;“创建 OIDC 应用”\n具体字段填写信息如下：\n应用名：输入自定义的应用名称（例如： iotsimulation） 认证地址：输入自定义的应用名称（例如： iotsimulation） 回调地址 URL：输入 \u0026ldquo; http://127.0.0.1:4200 \u0026ldquo;。 请注意，该值会在 IoT device Simulator 部署后会使用 Cloudformation 的输出值进行替换，如果不替换，将无法实现用户认证成功后系统自动跳转的功能。\n 授权模式：选择 authorization_code, refresh_token, authingToken 单选框。 返回类型：选择 Code 单选框 Token 换取时认证方式： 选择 Client_secret_post 单选框。 id_token 签名算法： 选择 RS256 单选框。 高级选项 》 自定义 RSA 签名密钥， 点击随机生成签名密钥。例如 其他值保持默认值，点击 “确定” 按钮。\n生成 OIDC 应用。 点击已授权应用。信息如下所示。（注意：仅为示例，真实值请根据自己创建的 OIDC 应用进行填写） 请留意如下字段，如下字段中对应的值要在以后的步骤中被使用到。\n App ID App Secret Issuer 应用名 认证地址 回调 URL 签名密钥  创建测试用户 该测试用户将用于整个解决方案的功能演示。选择右侧的【用户中心】-》“创建用户”按钮。 输入用户名，邮箱，密码和确认密码。该用户名及密码将用于 IoT Device Simulator 的登录界面。 创建成功后，所创建的新用户会出现在当前用户列表中。如下图所示，用户名为 test 的用户已经被成功创建。 "
+},
+{
+	"uri": "/001_iot_simulator/010_introduction/architecture/",
+	"title": "架构描述",
+	"tags": [],
+	"description": "",
+	"content": "AWS CloudFormation 模板部署了设备模拟器 API，该 API 利用 Amazon API Gateway 调用 AWS Lambda 函数。这些 Lambda 函数提供了用于在虚拟设备和设备类型上执行数据 CRUD 操作，记录相关模拟指标以及执行管理任务的业务逻辑。这些Lambda 函数与 Amazon Simple Storage Service（Amazon S3），Amazon DynamoDB，AWS 身份和访问管理（IAM）和 Amazon CloudWatch Logs 交互以提供数据存储，管理和日志记录功能。\n该解决方案还部署了一个包含两个公共子网和两个的私有子网的 Amazon VPC 网络拓扑。该模拟器引擎在由 AWS Fargate 提供的 Amazon Elastic Container Service（Amazon ECS）容器中运行。 同时 VPC 还包括一个 NAT 网关。\n该解决方案创建一个 Web 控制台，并将其部署到配置了静态网站托管的 Amazon S3存储桶中。关于用户认证的部分，本方案使用 Authing（https://authing.cn/ ）作为 OpenID 的提供商， Cognito Identity pool 支持将身份与通过 IAM 配置的 OpenID Connect 提供商相关联，得到 ID 令牌，从而实现对控制台和设备模拟器 API 的访问控制。\n首先需要进入系统，点击登录按钮后，系统会转向到 authing.cn 并提示输入用户和密码。当输入正确的用户名和密码后，进入到主 页面。\n业务逻辑方面，当设备模拟器 API 收到授权请求时，Amazon API Gateway 会调用相应的 Lambda 函数。 Lambda 函数将执行结果返回给 API，API 将结果返回给模拟器控制台。收到设备模拟请求后，设备微服务会将请求发送到 Amazon Simple Queue Service（Amazon SQS）中的模拟队列。仿真引擎轮询仿真队列以获取仿真开始和停止请求。\n最后，当收到启动物联网设备请求后，系统将基于该请求生成虚拟设备。并在设备类型定义中的持续时间内，开始将模拟数据发布到已定义的 AWS IoT 端点。当用户每次点击该设备的启动按钮，所对应的模拟设备就会开始运行，直到定义的执行持续时间到期或收到停止请求为止。当收到停止模拟请求后，系统将根据该请求停止设备模拟，并在当前设备列表中所对应的设备进行状态更新。\n"
+},
+{
+	"uri": "/002_cvra/030_introduction/architecture/",
+	"title": "架构描述",
+	"tags": [],
+	"description": "",
+	"content": " 联网车辆会发送消息到 AWS IoT平台，AWS IoT在收到消息时会对其进行身份验证和授权，而规则引擎会对消息执行相应的规则，将其路由到相应的后端应用程序。\n AWS IoT 规则将联网车辆数据转发到 Amazon Kinesis Data Firehose 流，原始数据保存到 Amazon S3 存储桶。\n 负责行程数据的 AWS IoT 规则会实时处理检测并触发调用 AWS Lambda 函数来处理行驶中车辆发送的数据，并将其存储在 DynamoDB 表中。\n 负责驾驶员安全评分的 AWS IoT 规则会行程结束后，进行触发调用 AWS Lambda 函数来处理聚合的行程数据。以便生成驾驶员安全评分、触发针对驾驶员的 Amazon SNS 通知，并将评分添加到行程数据 DynamoDB 表中。\n 负责诊断故障代码的 AWS IoT 规则会检测 IoT 主题中的诊断故障代码，然后调用 Lambda 函数来将故障代码存储在 DynamoDB 表中。并将其转换为容易被读取的信息。\n 负责基于位置的营销的 AWS IoT 规则会检测车辆的位置，然后调用 Lambda 函数来确定车辆是否位于兴趣点附近。当车辆靠近兴趣点时，该函数会将位置记录在 DynamoDB 表中，并触发针对用户的 Amazon SNS 通知，其中附带广告。\n  "
+},
+{
+	"uri": "/001_iot_simulator/020_hands_on_guide/launchstack/",
+	"title": "快速部署",
+	"tags": [],
+	"description": "",
+	"content": " 本文的步骤主要针对在运行在由西云数据运营的 AWS（宁夏）区域或由光环新网运营的 AWS（北京）区域中的 IoT Device Simulator 解决方案，您可以使用以下链接快速启动一个 CloudFormation 堆栈来部署和管理整个方案：\n点击启动堆栈 \n开始启动堆栈 点击宁夏和北京区域链接，打开 AWS 管理控制台（如果还没登录会先跳转到登录页面，登录后进入模板启动页面）。默认情况下，此模板在宁夏区域启动，您同时可以使用控制台右上方的区域选择链接，以在其他区域部署该方案。 配置启动参数 点击下一步，进入详细参数的配置页面\n配置示例如下：\n下表展示的是每一项参数的含义及默认值。请注意：以下所有的值都为必填值。\n   参数 默认 描述     AuthingThumbPrint Yes Authing 指纹，请保持默认值e6a3b45b062d509b3382282d196efe97d5956ccb   AuthingAppUrl No 请输入 Authing OIDC 应用中对应的 “Issue” 字段值，例如https://iotsimulation.authing.cn/oauth/oidc   AuthingAppOidc No 请输入输入 Authing OIDC 应用中对应的 “Issue” 字段值中去掉 “https\u0026rdquo;的部分，例如 iotsimulation.authing.cn/oauth/oidc   AuthingAppId No 请输入 Authing OIDC 应用中对应的 “App ID” 字段值，例如 5e9420f3b16cc8e2a51c1868   AuthingAppName No 请输入 Authing OIDC 应用中对应的 “应用名” 字段值，例如 iotsimulation   AuthingAppSecret No 请输入 Authing OIDC 应用中对应的 “App Secret” 字段值，例如 a2d5eba65b1b614a50db1ade61f50e4b   AuthingRSAsignature No 请输入 Authing OIDC 应用中对应的 “签名密钥” 字段值，例如 { \u0026ldquo;n\u0026rdquo;: \u0026ldquo;zTAIwLfWzymVYGK5oywDJnqrq8pbMIQAQVYQEtGC YiDct8nknbtvqHg3N31O3n-vhOOIZE26Ybg3dnlN__I5UDjLmSY_cl_Nusvxs3XZFzw pCuSyLzirZ3MT43HLP8HFV3iCeCgN3mNwDO3xJcnqX KzMmLSgNOmSxLdThKXh1a4_TC5gtbT-qmeO1S0yyDD5HNKvgAsRUl6BFXKY3LS-3o2gT9uWwyeX_PeTXtbSebU4Tya1UwMuzlDxvT3kb HRv7zDuVhG5ypBiEXnO04AGeUUAUd5PnuwQum8v1 mMCmelcw0oKoMcwTuImCTIhWbPTg_blI8EVFOtvRi mAOm8l7Q\u0026rdquo;, \u0026ldquo;e\u0026rdquo;: \u0026ldquo;AQAB\u0026rdquo;,\u0026ldquo;use\u0026rdquo;: \u0026ldquo;sig\u0026rdquo;, \u0026ldquo;alg\u0026rdquo;: \u0026ldquo;RS256\u0026rdquo;, \u0026ldquo;kid\u0026rdquo;: \u0026ldquo;jjtRhZbXxUmh5ZTCOsD0YpOrM0AyQdoC8xsyfhjLSQ 0\u0026rdquo;,\u0026ldquo;kty\u0026rdquo;: \u0026ldquo;RSA\u0026rdquo;}   MapxToken No 请输入 Mapx Token 值，例如 pk.eyJ1IjoiY2h1bmh1YXYiLCJhIjoiY2s2OHo3xxxxxxxxx xxxxxxxx    具体参数输入示例：\n参数设置完成后，点击下一步。在本步骤中请确保堆栈选项保留默认值。直接点击下一步。 授权 IAM 并创建堆栈 在最后的审核页面中，勾选最下方的【我确认，AWS CloudFormation 可能创建 IAM资源。】选择框。接下来点击【创建堆栈】，开始堆栈的创建。 等待堆栈创建成功 您可以在 AWS CloudFormation 控制台的【状态】列中查看堆栈的状态，并点击右上方的刷新按钮更新状态。大约五分钟内，您可以看到堆栈状态变为CREATE_COMPLETE，此时堆栈创建成功。 查看堆栈资源 堆栈创建后，点击【资源】标签，可以看到这个堆栈启动的所有资源。 查看堆栈输出参数 点击堆栈的【输出】 tab 页，可以看到该堆栈的输出参数。其中 “NeedToUpdateAUthingCallBackURL” 的输出值需要使用。 更新 authing 中的 Redirect URL 堆栈创建完成后，点击 CloudFormation 中对应的堆栈的“输出”标签页。\n 复制 “NeedToUpdateAUthingCallBackURL”中对应的值，例如 \u0026ldquo; http://iotsim73-iotsimwebsitebucket-mmpj7mzz94ai.s3-website.cn-north-1.amazonaws.com.cn/home/login \u0026ldquo; 需要在 Authing 网站中进行相应的更新。\n 登录Authing.cn 网站，点击左侧的 用户池列表中您创建的用户池。 在右侧点击【第三方登录】-》【OIDC 应用】: 例如 Iotsimulation 用户池 选择 【回调 URL】 进行更新。请确保多个回调 URL 使用“;”进行分割。示例如下 "
+},
+{
+	"uri": "/002_cvra/040_hands_on_guide/042_launchstack/",
+	"title": "快速部署",
+	"tags": [],
+	"description": "",
+	"content": " 本文的步骤主要针对在运行在由西云数据运营的AWS（宁夏）区域或由光环新网运营的AWS（北京）区域中部署车联网解决方案，您可以使用以下链接快速启动一个CloudFormation堆栈来部署和管理整个方案：\n点击启动堆栈 \n开始启动堆栈 点击宁夏和北京区域链接，打开 AWS 管理控制台（如果还没登录会先跳转到登录页面，登录后进入模板启动页面）。默认情况下，此模板在宁夏区域启动，您同时可以使用控制台右上方的区域选择链接，以在其他区域部署该方案。 指定堆栈详细信息 堆栈名称 ： connected-vechicle\n参数：\nOIDCAppSecretParameter 字段输⼊随机字符或数字，该值会⽤于 JWT Token 的签 发和验证。\n随机字符串⽣成⽅法见 【部署说明】→ 【前提】→ 【准备⽤于 OIDC（OpenID Connect） 的 JWT token 加密及验证的字符串】中⽣成的随机字符串。\n本指南使⽤ a1ef50c2e6a5e31f0f5ddc4a8f0fad41 作为⽰例。 点击 【下⼀步】按钮。\n配置堆栈选项 保持默认值，点击【下⼀步】\n审核 请确保勾选 “我确认，AWS CloudFormation 可能创建具有⾃定义名称的 IAM 资源”的 单选框。如下图所⽰：\n点击 【创建堆栈】按钮。\n部署完成 等待⼤约 5 分钟，堆栈部署完成。 点击【输出】标签页。查找 TelemetricsApiEndpoint 键对应的值。例如下图中的 https://gbos35z12b.execute-api.cn-northwest-1.amazonaws.com/prod 该值为车联⽹解决⽅案 API Gateway 的 endpoint，通过该 endpoint 可实现数据交 互。 "
+},
+{
+	"uri": "/001_iot_simulator/020_hands_on_guide/howtouse/",
+	"title": "系统使用",
+	"tags": [],
+	"description": "",
+	"content": " 登录 物联网设备模拟器的 web 控制台 点击 CloudFormation 中对应堆栈的“输出”标签页中的 ManagementConsole 字段值，例如 http://iotsim73-iotsimwebsitebucket-mmpj7mzz94ai.s3-website.cn-north-1.amazonaws.com.cn/\n输入本指南中【部署说明】- \u0026gt; 【Authing】 -\u0026gt; 【创建测试用户】部分中所创建用户的用户名和密码。 点击【登录】后, 会进入到 物联网设备模拟器 的主界面。\n登录主界面 登录后，显示首页界面如下 仪表板 该界面显示 我的设备数量等信息。 我的设备 显示当前所有模拟设备列表及状态。 物联网设备模拟 设备类型用于定义模拟物联网设备将发送的数据类型。 物联网设备模拟器控制台可帮助您更轻松地管理设备类型。 使用控制台，您可以查看和编辑设备类型。\n要查看您的设备类型，请导航到物联网设备模拟器控制台。 在导航窗格中，选择“设备类型”。 与您的帐户关联的所有设备类型的列表将显示在“设备类型”页面上。 要查看特定设备类型的详细信息，请在“设备类型”页面上找到适用的设备类型，然后选择“编辑”。 这显示了设备类型定义详细信息，包括名称，可见性，数据主题，数据传输持续时间和间隔以及消息有效负载。 要编辑设备类型，请更改适用的值。 您还可以从消息有效负载中删除现有属性或向消息有效负载中添加新属性。 选择保存以保存更改，或选择取消中止更改。\n使用步骤 使用此过程定义每个模拟的 IoT 设备将发送的数据。 为有效负载中的每个项目创建数据的结构以及特定的属性和类型。\n 登录物联网设备模拟器控制台，然后在导航窗格中，选择“设备类型”。 点击 “+添加设备类型” 按钮。 在“设备类型定义”页面上，输入适当的信息。 要格式化有效载荷，请选择 “增加属性”。 在“消息属性”窗口中，输入适当的属性数据类型。 选择提交。 对设备有效载荷的每个属性重复步骤 4-6。 选择保存。  设备类型界面 创建通用设备 创建模拟的物联网设备。\n 使用此过程定义将启动的模拟物联网设备。 在“ 物联网设备模拟器”控制台页面上的导航菜单中，选择“通用设备”。 选择 “+新增通用设备” 按钮。 在“新增通用设备”窗口中，指定设备类型和要启动的设备的数量。 您一次最多可以创建 100 个设备。 选择提交。  通用设备已被成功添加。 点击 “启动” 按钮，启动设备模拟。\n实时显示 物联网设备状态及 MQTT 消息 点击 【通用设备】-\u0026gt; 【启动】按钮 设备启动后，点击 【查看】按钮 显示当前设备正在运行，并且实时显示 MQTT 主题(Topic) 的消息。\n汽车模拟 另外该方案还包括汽车模拟模块，您可以使用该模块使用预定义的汽车类型来模拟车辆遥测数据。\n增加车辆 点击 左侧【汽车】进入 【我的车队】 点击 【增加车辆】按钮 提交后，新的车辆增加到 车辆列表中。 查看车辆 点击 【查看】按钮，显示 车辆详细信息。界面信息不仅包括车辆当前行驶位置，并且也包含类似 节流阀，速度，发动机转速，机油温度，传递扭矩，汽油表，行驶里程，变速箱等详细信息及仪表盘。同时类似于地图及仪表盘的数值随着汽车的移动而实时变化。 按照上述步骤，已经成功部署该方案及主要功能演示。\n"
+},
+{
+	"uri": "/001_iot_simulator/020_hands_on_guide/prerequest/mapboxtoken/",
+	"title": "获取 Mapbox Token",
+	"tags": [],
+	"description": "",
+	"content": " 关于汽车在地图上位置的实时更新功能也是本模块所具有的功能，所使用的地图是利用 Mapbox 所提供的服务。 该功能的前提需要您注册一个免费的 Mapbox 开发人员帐户，并获得 访问令牌 (Access Token)。\n申请新账户链接 请到如下的网站进行账户的开通 https://account.mapbox.com/auth/signin/\n获得 Access Token 新账户申请成功后，需要创建新的 Access Token, 具体操作如图所示。 并获得访问 Mapx 服务的 Token，例如 pk.eyJ1IjoiY2h1bmh1YXYiLCJhIjoiY2s2OHo3xxxxxxxxxbjNkeWZwYjQ4dSJ9.nDexx xxxxxxxx\n"
+},
+{
+	"uri": "/002_cvra/040_hands_on_guide/043_datatrans/",
+	"title": "数据存储及交互",
+	"tags": [],
+	"description": "",
+	"content": " DynamoDB 表 本解决方案使用 DynamoDB 存储相关行程数据，DTC 故障代码数据等。共包含如下 DynamoDB 表，具体信息如下：\n   DynamoDB 表 用途 数据示例     AdTrackingTable 广告跟踪表 { \u0026ldquo;action\u0026rdquo;: \u0026ldquo;none\u0026rdquo;, \u0026ldquo;created_at\u0026rdquo;: \u0026ldquo;2020-05-25T03:10:23Z\u0026rdquo;, \u0026ldquo;identified_at\u0026rdquo;: \u0026ldquo;2020-05-25T03:10:23Z\u0026rdquo;, \u0026ldquo;message\u0026rdquo;: \u0026ldquo;Book your holiday party and get a $50 gift card:\u0026ldquo;, \u0026ldquo;poi_id\u0026rdquo;: \u0026ldquo;va_rst_1\u0026rdquo;, \u0026ldquo;trip_id\u0026rdquo;: \u0026ldquo;c3d597dd-bbf7-4dfc-8a34-6abc43f9c124\u0026rdquo;, \u0026ldquo;updated_at\u0026rdquo;: \u0026ldquo;2020-05-25T03:10:23Z\u0026rdquo;, \u0026ldquo;vin\u0026rdquo;: \u0026ldquo;XBKW3TRJUFYQ9TVHX\u0026rdquo;}   DtcTable 常见 DTC 编码及解释 { \u0026ldquo;description\u0026rdquo;: \u0026ldquo;Mass or Volume Air Flow Circuit Malfunction\u0026rdquo;, \u0026ldquo;dtc\u0026rdquo;: \u0026ldquo;P0100\u0026rdquo;, \u0026ldquo;steps\u0026rdquo;: []}   HealthReportTable 车辆健康报告 {vin,report_id}   MarketingPoiTable 兴趣地点信息 { \u0026ldquo;address\u0026rdquo;: \u0026ldquo;700 Dranesville Rd, Herndon, VA 20170\u0026rdquo;, \u0026ldquo;city\u0026rdquo;: \u0026ldquo;Herndon\u0026rdquo;, \u0026ldquo;latitude\u0026rdquo;: \u0026ldquo;38.97674\u0026rdquo;, \u0026ldquo;longitude\u0026rdquo;: \u0026ldquo;-77.377427\u0026rdquo;, \u0026ldquo;message\u0026rdquo;: \u0026ldquo;Parents, don\u0026rsquo;t forget, no school this Friday. Enjoy your long weekend!\u0026rdquo;, \u0026ldquo;poi\u0026rdquo;: \u0026ldquo;Town High School\u0026rdquo;, \u0026ldquo;poi_id\u0026rdquo;: \u0026ldquo;va_edu_1\u0026rdquo;, \u0026ldquo;radius\u0026rdquo;: \u0026ldquo;500\u0026rdquo;, \u0026ldquo;state\u0026rdquo;: \u0026ldquo;VA\u0026rdquo;}   VehicleDtcTable 车辆故障 { \u0026ldquo;acknowledged\u0026rdquo;: false, \u0026ldquo;created_at\u0026rdquo;: \u0026ldquo;2020-05-25T01:53:30Z\u0026rdquo;, \u0026ldquo;description\u0026rdquo;: \u0026ldquo;No description available.\u0026rdquo;, \u0026ldquo;dtc\u0026rdquo;: \u0026ldquo;C1959\u0026rdquo;, \u0026ldquo;dtc_id\u0026rdquo;: \u0026ldquo;yPe-8-A9G\u0026rdquo;, \u0026ldquo;generated_at\u0026rdquo;: \u0026ldquo;2020-05-25T01:53:29Z\u0026rdquo;, \u0026ldquo;steps\u0026rdquo;: [   ], \u0026ldquo;updated_at\u0026rdquo;: \u0026ldquo;2020-05-25T01:53:30Z\u0026rdquo;, \u0026ldquo;vin\u0026rdquo;: \u0026ldquo;XBKW3TRJUFYQ9TVHX\u0026rdquo;}     VehicleOwnerTable 驾驶人员与车辆关联表 { \u0026ldquo;nickname\u0026rdquo;: \u0026ldquo;BMW\u0026rdquo;, \u0026ldquo;owner_id\u0026rdquo;: \u0026ldquo;5ec6644b9eb9fe198b7f973e\u0026rdquo;, \u0026ldquo;vin\u0026rdquo;: \u0026ldquo;XBKW3TRJUFYQ9TVHX\u0026rdquo;}   VehicleTripTable 车辆行程数据表 { \u0026ldquo;accelerator_pedal_position_mean\u0026rdquo;: 18.309185124850682, \u0026ldquo;brake_mean\u0026rdquo;: 11.255813953488373, \u0026ldquo;brake_pedal_status\u0026rdquo;: false, \u0026ldquo;driver_safety_score\u0026rdquo;: 66.4558315455128, \u0026ldquo;end_time\u0026rdquo;: \u0026ldquo;2020-05-25T06:00:06.168Z\u0026rdquo;, \u0026ldquo;engine_speed_mean\u0026rdquo;: 2811.2972050532244, \u0026ldquo;fuel_consumed_since_restart\u0026rdquo;: 0.16391932245133267, \u0026ldquo;fuel_level\u0026rdquo;: 99.59023919387167, \u0026ldquo;geojson\u0026rdquo;: { \u0026ldquo;bucket\u0026rdquo;: \u0026ldquo;cvbeta-iotsimdatabucket-muuy18aggwi\u0026rdquo;, \u0026ldquo;key\u0026rdquo;: \u0026ldquo;trip/1Z644A08RBQY8SGKC/c6b9b824-6085-4539-8427-a45d63adf615.json\u0026rdquo; }, \u0026ldquo;high_acceleration_event\u0026rdquo;: 2, \u0026ldquo;high_braking_event\u0026rdquo;: 0, \u0026ldquo;high_speed_duration\u0026rdquo;: 0, \u0026ldquo;idle_duration\u0026rdquo;: 49404, \u0026ldquo;ignition_status\u0026rdquo;: \u0026ldquo;off\u0026rdquo;, \u0026ldquo;latitude\u0026rdquo;: 38.918713, \u0026ldquo;longitude\u0026rdquo;: -77.227279, \u0026ldquo;name\u0026rdquo;: \u0026ldquo;aggregated_telemetrics\u0026rdquo;, \u0026ldquo;odometer\u0026rdquo;: 7.858865687675835, \u0026ldquo;oil_temp_mean\u0026rdquo;: 217.89026056033126, \u0026ldquo;start_time\u0026rdquo;: \u0026ldquo;2020-05-25T05:51:07.803Z\u0026rdquo;, \u0026ldquo;timestamp\u0026rdquo;: \u0026ldquo;2020-05-25 06:00:06.168000000\u0026rdquo;, \u0026ldquo;torque_at_transmission_mean\u0026rdquo;: 121.5500692832436, \u0026ldquo;transmission_gear_position\u0026rdquo;: \u0026ldquo;first\u0026rdquo;, \u0026ldquo;trip_id\u0026rdquo;: \u0026ldquo;c6b9b824-6085-4539-8427-a45d63adf615\u0026rdquo;, \u0026ldquo;vehicle_speed_mean\u0026rdquo;: 52.574673993985506, \u0026ldquo;vin\u0026rdquo;: \u0026ldquo;1Z644A08RBQY8SGKC\u0026rdquo;}    进入 DynamoDB Console 页面，查看 已经创建的DynamoDB表。\nAWS IoT 消息主题 AWS IoT设备网关使设备能够安全有效地与AWS IoT进行通信，已联网的车辆使用发布/订阅模型与云端进行通信。 在发布/订阅模型中，车辆使用 MQTT或 WebSocket 协议将消息发送到 AWS IoT 平台中特定的主题。\n   消息类型 主题 Action 描述     Telematics（远程信息处理 connectedcar/telemetry/ publish 车辆传感器和远程信息处理数据{ timestamp:x, trip_id:x, vin:x, name:x, value:x }   Vehicle Trip Info （车辆行驶数据） connectedcar/trip/ publish 聚合车辆行驶数据   Diagnostic Trouble Code (诊断故障码) connectedcar/dtc/ publish 诊断故障码（DTC）{ timestamp:x, trip_id:x, vin:x, name:\u0026lsquo;dtc\u0026rsquo;, value:x }   Anomaly Alert (异常警告) connectedcar/alert//anomaly Subscribe 异常检测告警{ type:’anomaly’,message:x }   DTC Alert (DTC 告警） connectedcar/alert//dtc Subscribe DTC 告警{ type:’dtc’,message:x }   Driver Score Alert (驾驶员安全评分告警） connectedcar/alert//driverscore Subscribe 驾驶员安全评分告警{ type:’driverscore’,message:x}   Advertisement Alert(广告提醒） connectedcar/telemetry//info Subscribe 广告提醒 { type:’info’,message:x }    AWS IoT 规则 当联网车辆将消息发布到 AWS IoT 平台后，AWS IoT规则引擎会根据预先定义的规则进行评估，确定是否需要触发动作（Action）。如果触发，则将消息进行转换或者转发到其他 AWS服务。\n例如可以将规则引擎配置为将车辆发送的实时数据从AWS IoT将转发到其他AWS服务，如Amazon Kinesis Streams或Amazon DynamoDB，或从一个AWS IoT 主题转发到另一个主题。数据也可以被发送到AWS Lambda上的自定义应用程序。\n本解决方案共使用如下 AWS IoT 规则：\nConnectedVehicleTelematicsDtc 功能：针对车辆发出的DTC 故障代码进行信息丰富，并存储数据到 DynamoDB表。\n规则查询语句：\nSELECT * FROM 'connectedcar/dtc/#'  操作：触发Lambda 处理函数 DtcServiceFunction\nConnctedVehicleDriverScore 功能：针对驾驶员的驾驶行为进行评分，并存储数据到 DynamoDB表。\n规则查询语句：\nSELECT * FROM 'connectedcar/trip/#' WHERE ignition_status = 'off'  操作：触发Lambda 处理函数 DriverSafetyServiceFunction\nConnectedVehicleTrip 功能：把车辆的行程数据存储到 DynamoDB。\n规则查询语句：\nSELECT * FROM 'connectedcar/trip/#'  操作：将全部或部分 MQTT 消息拆分并写入到 DynamoDB 表VehicleTripTable。MQTT消息载荷中的每个属性将写入到 DynamoDB表的单独一列。此操作处理的消息必须采用 JSON 格式。\nConnectedVehicleJITR 功能：车辆第一次连接时进行注册。\n规则查询语句：\nSELECT * FROM '$aws/events/certificates/registered/certid'  操作：触发Lambda 处理函数 JitrServiceFunction\nConnectedVehicleTelematicsStorage 功能：把车辆行驶过程中，通过车载的 Greengrass从各个传感器收集数据，并将数据发送到AWS IoT 平台。当数据发送到 AWS IoT 平台后，使用该规则把实时数据存放到 Amazon Kinesis Firehose 流。\n规则查询语句：\nSELECT * FROM 'connectedcar/telemetry/#'  操作：将消息发送到流名称为connected-vehicle-telemetry的Amazon Kinesis Firehose 流。\nConnectedVehicleLocationBasedMarketing 功能：把车辆行驶过程中，会将车辆的实时位置信息（经纬度）发送到AWS Io。该规则根据经纬度信息查询当前车辆位置附近是否有用户感兴趣的地点。如果检索到感兴趣的地点，会通过 AWS SNS服务发送消息通知驾驶员。\n规则查询语句：\nSELECT * FROM 'connectedcar/telemetry/#' WHERE name = 'location'  操作：触发Lambda 处理函数 LocationBasedMarketingFunction。\n"
+},
+{
+	"uri": "/002_cvra/040_hands_on_guide/044_howtouse/",
+	"title": "系统使用",
+	"tags": [],
+	"description": "",
+	"content": " 模拟车辆行驶 由于本解决方案专注于车联网中云端部分的功能实现。而对于车端的数据发送则建议您借助于“物联网设备模拟器解决方案”中的汽车功能模块发送车辆模拟行驶数据。\n关于物联网设备模拟器解决方案的部署，请参考 (https://www.amazonaws.cn/solutions/iot-device-simulator/)\n或者自己开发脚本或程序按照如下的数据格式发送模拟数据。\n在“物联网设备模拟器”中【汽车】模块，发送模拟数据格式如下：\n   变量 含义     vehicle_speed_mean 车辆速度   engine_speed_mean 发动机转速   torque_at_transmission_mean 扭矩   oil_temp_mean 油温   accelerator_pedal_position_mean 加速踏板位置   brake_mean 刹车踏板力度   high_speed_duration 高速时长   high_acceleration_event 急加速事件   high_braking_event 急减速事件   idle_duration 怠速时长   start_time 驾驶开始时间   ignition_status 点火状态   brake_pedal_status 刹车踏板状态   transmission_gear_position 档位   odometer 里程表数值   fuel_level 剩余油量   fuel_consumed_since_restart 本次驾驶油耗   latitude 经度   longitude 维度   timestamp 时间戳   trip_id 行程ID   vin 车辆ID   end_time 驾驶结束时间    API Gateway API 接口 该方案借助 API Gateway 对外提供操作及查询服务，接口描述如下：\n|路径|方法|功能 |/signin|post|提交用户名及密码，返回 JWT Token| |/vehicles|get|返回所有车辆信息| |/vehicles|post|创建新的车辆| |/vehicles/{vin}|get|根据输入参数车辆编码{vin}，返回车辆详细信息。| |/vehicles/{vin}/anomalies|get|返回某一辆车{vin}的所有异常驾驶记录| |/vehicles/{vin}/anomalies/{anomaly_id}|get|返回某一辆车{vin}的某一个异常驾驶记录{anomaly_id}详细信息| |/vehicles/{vin}/dtc|get|返回某一辆车{vin}的所有 DTC 故障代码| |/vehicles/{vin}/dtc/dtc_id|get|返回某一辆车{vin}中某一个DTC 代码{dtc_id}的详细信息| |/vehicles/{vin}/healthreports|get|返回某一辆车{vin}的所有健康报告| |/vehicles/{vin}/healthreports/{report_id}|get|返回某一辆车{vin}中某一个健康报告{report_id}的详细信息| |/vehicles/{vin}/trips|get|返回某一辆车{vin}的所有行驶记录| |/vehicles/{vin}/trips/{trip_id}|get|返回某一辆车{vin}中某一个行程{trip_id}的详细信息|\n使用 Restful API 工具进行测试 该解决方案部署完成后，只提供了 API Gateway 服务接口及 DynamoDB 表 ，S3 存储桶等数据存储服务。 而没有提供一个可视化的界面供用户使用。为了便于您的使用，可以借助于 Postman 或 Swagger 这两款免费的API 调用工具进行测试。 由于 API Gateway 提供相关服务导出为 Swagger 或 OpenAPI3 接口文件，所以用户可以从以下两种工具进行选择。在本指南中，仅以测试 Get /Vehicles 接口为例。\nPostman 借助于Postman，可以创建并执行任何REST，SOAP和GraphQL查询。如需获得更多关于 Postman的信息，请参考（https://www.postman.com/）。借助API Gateway 的 导出功能，可导出Connected Vehicle API 相关接口为 JSON 格式文件。然后把该 JSON 格式的文件导入 Postman。具体步骤如下： 1. 进入 API Gateway → Stages → Prods → Export → Export as Swagger →选择JSON 格式, 复制 Json文件内容。 2. 在 Postman → Import → Raws Text, 粘贴 Json 文件内容，点击 【continue】。 3. 选择 Post /signin 接口， 在Body 标签页中选择 【raw】单选框，并且在下面的输入框输输入如下信息，模拟用户登录。\n{\u0026quot;userid\u0026quot;:\u0026quot;5ec6644b9eb9fe198b7f973e\u0026quot;,\u0026quot;password\u0026quot;:\u0026quot;a1ef50c2e6a5e31f0f5ddc4a8f0fad41\u0026quot;}  userid 值可以是任意标志当前登录用户 id 的字符串，而 password则是在【部署说明】-\u0026gt; 【前提】中，所生成的32位字符的字符串。  点击【 Send】按钮，返回JWT Token.\n{ \u0026quot;jwttoken\u0026quot;: \u0026quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1ZWM2NjQ0YjllYjlmZTE5OGI3Zjk3M2UiLCJfaWQiOiI1ZWM2NjQ0YjllYjlmZTE5OGI3Zjk3M2UiLCJpYXQiOjE1OTEzMzc0NjIsImV4cCI6MTU5MTM0MTA2MiwiYXVkIjoiaHR0cDovL2F3c2Nvbm5lY3RlZHZlaGljbGUuY29tIiwiaXNzIjoiQVdTIENvbm5lY3RlZCBWZWhpY2xlIn0.p_W_JbQNi9wK-kC5iVpsMpA9W8HsfZP_nVssO-8Jr30\u0026quot; }  测试Get /vehicles 接口: 选择 Get /vehicles 接口函数， 选择【Headers】 标签页 ，选择【Key: Authorization】 ，在 【Value】输入框输入返回 Jwttoken 内容。  然后点击 【Send】 按钮。返回所有车辆数据。   Swagger UI 关于 Swagger UI 的详情，请参考该链接。https://swagger.io/tools/swagger-ui/ Swagger UI允许您可以以可视化的方式同API资源交互。 它可根据您的OpenAPI规范自动生成接口，并具有可视化文档，可简化后端实现和客户端使用。另外借助API Gateway 的 导出功能，可导出车辆网 API 相关接口（ JSON 格式文件）并导入 Swagger。\n示例界面如下： 启动 Swagger 1. 进入 API Gateway 控制台， 选择 Stages → Prods → Export → Export as Swagger →选择JSON 格式。 2. 下载 JSON 文件并保存。假设该 JSON 文件 connected_vehicle_swagger.json 存储在 /Users/test/ 目录。 3. 启动 Docker （请注意修改 /Users/test:/ 为您的目录名称） docker run -p 8080:8080 -e SWAGGER_JSON=/mnt/connected_vehicle_swagger.json -vpa /Users/test:/mnt swaggerapi/swagger-ui 4. 启动浏览器，输入 http://localhost:8080 5. 由于Swagger 运行在本地，localhost 的域名同 API Gateway 的域名不一致。根据 CORS 的规则，无法使用 Swagger 直接 提交(Post)数据。为了演示方便，使用 Curl 命令提交认证信息到 API Gateway /signin 接口。 Post 数据格式包含 userid 及 password。假设API Gateway URL 为 https://5hjzv26t9a.execute-api.cn-northwest-1.amazonaws.com.cn/prod 6. 在API Gateway 中 /Signin 接口中 Post 操作提供用户认证的功能。用户首先需要提交用户 ID 及密码，密码就是OIDCAppSecretParameter 参数所输入的值，例如 a1ef50c2e6a5e31f0f5ddc4a8f0fad41 7. 运行如下命令，得到 JWT Token。注意：请替换为您部署后得到的 API Gateway Endpoint。userid 值可以是任意标志当前登录用户 id 的字符串，而 password则是在【部署说明】-\u0026gt; 【前提】中，所生成的32位字符的字符串。\ncurl -X POST \u0026quot;https://5hjzv26t9a.execute-api.cn-northwest-1.amazonaws.com.cn/prod/signin\u0026quot; -H \u0026quot;accept: application/json\u0026quot; -H \u0026quot;Content-Type: application/json\u0026quot; -d \u0026quot;{ \\\u0026quot;userid\\\u0026quot;: \\\u0026quot;5ec6644b9eb9fe198b7f973e\\\u0026quot;, \\\u0026quot;password\\\u0026quot;: \\\u0026quot;a1ef50c2e6a5e31f0f5ddc4a8f0fad41\\\u0026quot;}\u0026quot;   返回如下字符串。\n{\u0026quot;jwttoken\u0026quot;:\u0026quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1ZWM2NjQ0YjllYjlmZTE5OGI3Zjk3M2UiLCJfaWQiOiI1ZWM2NjQ0YjllYjlmZTE5OGI3Zjk3M2UiLCJpYXQiOjE1OTEzMzY2MzgsImV4cCI6MTU5MTM0MDIzOCwiYXVkIjoiaHR0cDovL2F3c2Nvbm5lY3RlZHZlaGljbGUuY29tIiwiaXNzIjoiQVdTIENvbm5lY3RlZCBWZWhpY2xlIn0.4UloXDdBvc2wzPI1oScUOCZAHwCCcUZawuKOEw1k1pY\u0026quot;}  该 Token 的默认过期时间为1 小时，使用算法 HS256。\n 使用 Jwt decode 解码（可使用工具 https://jwt.io/）。载荷信息显示如下：\n\u0026quot;sub\u0026quot;: \u0026quot;5ec6644b9eb9fe198b7f973e\u0026quot;, \u0026quot;_id\u0026quot;: \u0026quot;5ec6644b9eb9fe198b7f973e\u0026quot;, \u0026quot;iat\u0026quot;: 1591336638, \u0026quot;exp\u0026quot;: 1591340238, \u0026quot;aud\u0026quot;: \u0026quot;http://awsconnectedvehicle.com\u0026quot;, \u0026quot;iss\u0026quot;: \u0026quot;AWS Connected Vehicle\u0026quot;  选取 Jwttoken 对应值，其中sub字段表示当前 userid，iat字段为 token 颁发时间,exp 字段为token过期时间。aud及 iss 为演示目的使用。\n 在 Swagger 中点击 Authorize 按钮  在 Vechicle-service-authorizer(apikey)中的 Value 输入框输入 jwttoken 对应的值。 示例\neyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1ZWM2NjQ0YjllYjlmZTE5OGI3Zjk3M2UiLCJfaWQiOiI1ZWM2NjQ0YjllYjlmZTE5OGI3Zjk3M2UiLCJpYXQiOjE1OTEzMzY2MzgsImV4cCI6MTU5MTM0MDIzOCwiYXVkIjoiaHR0cDovL2F3c2Nvbm5lY3RlZHZlaGljbGUuY29tIiwiaXNzIjoiQVdTIENvbm5lY3RlZCBWZWhpY2xlIn0.4UloXDdBvc2wzPI1oScUOCZAHwCCcUZawuKOEw1k1pY   点击 authorize 按钮，保存后。点击 Close 按钮，关闭该窗口。\n 测试 Get /vehicles 接口。  点击 Try it out → Execute 按钮。 返回所有车辆信息。\n  "
+},
+{
+	"uri": "/001_iot_simulator/010_introduction/basics/",
+	"title": "组件介绍",
+	"tags": [],
+	"description": "",
+	"content": " 本小节将介绍解决方案中的组件，我们将从以下模块展开:\n设备模拟器模块 物联网设备模拟器微服务是一系列 AWS Lambda 函数，为所有设备模拟操作提供业务逻辑和数据访问层。每个 Lambda 函数都采用 AWS 身份和访问管理(IAM)角色，具有最少的特权访问(所需的最低权限)来执行其指定的功能。\n管理模块 Lambda 函数 iot-sim-admin-service 处理发送到 /admin/* API 端点的设备模拟器API 请求。所有 /admin/ * 的 API 端点都配置为 Lambda 代理端点，将完整的请求有效负载转发至 iot-sim-admin-service 函数。\n度量指标模块 Lambda 函数 iot-simple-metrics-service 处理发送到 /metrics/* API 端点的设备模拟器 API 请求。所有/metrics/* 的 API 端点都被配置为 Lambda proxy 端点 ，将完整的请求有效负载转发给 iot- simple-metrics-service 函数。度量指标模块处理物联网设备模拟器的所有度量指标操作。\n设备管理模块 Lambda 函数 iot-sim-device-service 处理发送到 /device/* 端点的设备模拟器 API请求。所有 /device/* API 端点都配置为 Lambda proxy 端点，将完整的请求有效负载传递给 iot-sim-device-service 函数。设备管理模块所有设备和设备类型操作，包括设备列表、添加设备、删除设备、列表设备类型、添加设备类型、更新设备类型、启动模拟和停止模拟等操作。\n设备仿真模块 本方案利用 Amazon Simple Queue Service（Amazon SQS），Amazon Elastic Container Service（Amazon ECS）和 AWS Fargate 来模拟将数据发送到 AWS IoT终端节点的虚拟设备。 用户通过该解决方案附带的 Web 控制台发出模拟请求。 系统将模拟请求添加到存储到 Amazon SQS 队列中，直到将其处理为止。 AWS Fargate 及 Amazon ECS 容器包含一个模拟引擎，该引擎会定期轮询模拟队列以获取模拟请求。 模拟引擎将启动虚拟设备，然后启动设备将模拟数据发布到 AWS IoT终端节点。 在到达指定的持续时间之后，模拟引擎将停止模拟，终止虚拟设备，并更新 iot-sim-device-widgets DynamoDB 表中的设备状态和指标。\n汽车模拟模块 另外该方案还包括汽车模拟模块，您可以使用该模块使用预定义的汽车类型来模拟车辆遥测数据。 该遥测数据来自动力总成仿真模型所生成的仿真数据。关于汽车在地图上位置的实时更新功能也是本模块所具有的功能，所使用的地图是利用 Mapbox 所提供的服务。 该功能的前提需要您注册一个免费的 Mapbox 开发人员帐户，并获得 访问令牌 (Access Token)。 在注册后，需要将该 Mapbox 访问令牌添加到 IoT 设备模拟器。\n认证模块 该模块利用 Authing.cn 所提供的身份验证功能。 在用户身份验证成功后，Authing.cn将发布一个 JSON Web Token (JWT) ，该令牌用于允许控制台将请求提交到设备模拟器API。 控制台将 HTTPS 请求与包含 JWT 令牌的授权标头一起发送到模拟器 API。\nDynamoDB 表 该方案使用 Amazon DynamoDB 表保存设备，设备类型，设置和度量指标，以及相关的元数据。\n"
+},
+{
+	"uri": "/002_cvra/030_introduction/basics/",
+	"title": "组件介绍",
+	"tags": [],
+	"description": "",
+	"content": " 本小节将介绍解决方案中的组件，我们将从以下模块展开:\nIoT消息认证 当AWS IoT收到消息时，它对消息进行身份验证和授权，规则引擎对消息执行适当的规则，规则引擎将消息路由到适当的后端应用程序。\nAWS IoT的所有连接点都利用了双向身份验证和数据加密传输的优势，以确保在没有经过验证的身份的情况下，不会在车辆和AWS IoT之间交换数据。\n行程数据 车辆在行驶时，会将传感器收集到的数据发送到 AWS IoT，AWS IoT规则不断触发调用Lambda函数，该函数处理车辆远程信息数据，并将数据存储在DynamoDB表中。\n驾驶员安全评分 在行程结束后，AWS IoT 规则检测到行程已经结束，会调用一个Lambda函数来处理行程数据并聚合。按照预设的算法来生成驾驶员的安全评分，该分数被添加到DynamoDB行程数据表中。\n诊断故障码 AWS IoT 诊断故障代码规则检测诊断发送到到IoT 主题的故障代码,并调用一个Lambda函数在DynamoDB表中存储故障代码，故障代码转换为便于用户阅读和理解的消息,并触发一个Amazon SNS通知包含故障代码的消息给用户。\n基于位置的营销 AWS IoT基于位置的营销的规则实时检测车辆的位置，并调用Lambda函数来确定车辆是否在感兴趣点附近。如果车辆靠近感兴趣的地点，该函数将在DynamoDB表中记录该位置，并向用户触发Amazon SNS通知，该通知中包含广告信息。\n用户认证模块 本解决方案会创建 API Gateway并作为数据交互的接口 。其他应用程序和第三方服务可以通过RESTful API安全地与 API Gateway进行交互。\n这些API充当访问存储在Amazon DynamoDB中的车辆数据的“前门”。\n关于用户认证的功能，其API Gateway 中 /Signin 接口的 Post 操作提供了用户认证的功能。用户首先需要提交用户 ID 及密码，后端 Lambda函数比对用户提交的密码和在使用 CloudFormation 创建堆栈时输入的密码。如果密码正确，那么返回一个 JWT Token，否则不会返回 JWT Token。具体流程如下图所示。\n针对其他接口的认证功能，则使用了自定义的 Lambda 授权方方法对用户请求进行验证。确保在请求 API Gateway 其他接口时需要确保HTTP Header 中设置Authorization变量。Lambda授权方函数验证 Authorization 变量的有效性。在该解决方案中，Authorization 的值为 /signin/ 接口返回的JWT Token 内容。JWT Token 内容示例：\njwttoken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1ZWM2NjQ0YjllYjlmZTE5OGI3Zjk3M2UiLCJfaWQiOiI1ZWM2NjQ0YjllYjlmZTE5OGI3Zjk3M2UiLCJpYXQiOjE1OTAzMjcyNjIsImV4cCI6MTU5MDMzMDg2MiwiYXVkIjoiaHR0cDovL2F3c2Nvbm5lY3RlZHZlaGljbGUuY29tIiwiaXNzIjoiQVdTIENvbm5lY3RlZCBWZWhpY2xlIn0.vEkDvSgaMmiUXY_XAW2ehd2J6Dfw2llSOGDGexlKoKo  "
+},
+{
+	"uri": "/categories/",
+	"title": "Categories",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/authors/",
+	"title": "Credits",
+	"tags": [],
+	"description": "",
+	"content": " Thanks to our wonderful contributors  for making Open Source a better place! Please go to Contributors page to checkout authors for this Workshop\n"
+},
+{
+	"uri": "/more_resources/",
+	"title": "More Resources",
+	"tags": [],
+	"description": "",
+	"content": " Discover more AWS resources for building and running your application on AWS:\nMore Workshops  Amazon ECS Workshop - Learn how to use Stelligent Mu to deploy a microservice architecture that runs in AWS Fargate Amazon Lightsail Workshop - If you are getting started with the cloud and looking for a way to run an extremely low cost environment Lightsail is perfect. Learn how to deploy to Amazon Lightsail with this workshop.  Tools for AWS Fargate and Amazon ECS  Containers on AWS - Learn common best-practices for running containers on AWS fargate - Command line tool for interacting with AWS Fargate. With just a single command you can build, push, and launch your container in Fargate, orchestrated by ECS. Wonqa is a tool for spinning up disposable QA environments in AWS Fargate, with SSL enabled by Let\u0026rsquo;s Encrypt. More details about Wonqa on the Wonder Engineering blog coldbrew - Fantastic tool that provisions ECS infrastructure, builds and deploys your container, and connects your services to an application load balancer automatically. Has a great developer experience for day to day use mu - Automates everything relating to ECS devops and CI/CD. This framework lets you write a simple metadata file and it constructs all the infrastructure you need so that you can deploy to ECS by simply pushing to your Git repo.  Courses  Microservices with Docker, Flask, and React - Learn how to build, test, and deploy microservices powered by Docker, Flask, React Amazon ECS!  "
+},
+{
+	"uri": "/tags/",
+	"title": "Tags",
+	"tags": [],
+	"description": "",
+	"content": ""
+}]

@@ -1,0 +1,1517 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.56.3" />
+    <meta name="description" content="Amazon EKS Workshop">
+<meta name="author" content="Brent Langston">
+
+    <link rel="shortcut icon" href="../../../images/favicon.ico" type="image/x-icon" />
+<link rel="icon" href="../../../images/favicon.ico" type="image/x-icon" />
+
+    <title>系统使用 :: Amazon EKS Workshop</title>
+
+    
+    <link href="../../../css/nucleus.css?1595237122" rel="stylesheet">
+    <link href="../../../css/fontawesome-all.min.css?1595237122" rel="stylesheet">
+    <link href="../../../css/hybrid.css?1595237122" rel="stylesheet">
+    <link href="../../../css/featherlight.min.css?1595237122" rel="stylesheet">
+    <link href="../../../css/perfect-scrollbar.min.css?1595237122" rel="stylesheet">
+    <link href="../../../css/auto-complete.css?1595237122" rel="stylesheet">
+    <link href="../../../css/atom-one-dark-reasonable.css?1595237122" rel="stylesheet">
+    <link href="../../../css/theme.css?1595237122" rel="stylesheet">
+    <link href="../../../css/hugo-theme.css?1595237122" rel="stylesheet">
+    
+      <link href="../../../css/theme-mine.css?1595237122" rel="stylesheet">
+    
+
+    <script src="../../../js/jquery-3.3.1.min.js?1595237122"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+        :not(pre) > code + span.copy-to-clipboard {
+            display: none;
+        }
+      
+    </style>
+    <!DOCTYPE html>
+<html class="no-js" lang="en-US" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+<html lang="en" class="js csstransforms3d">
+  <head>
+
+    <link rel="manifest" href="../../../manifest.json">
+
+    <meta charset="utf-8">
+    <meta property="og:title" content="EKSworkshop.com" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://eksworkshop.com" />
+    <meta property="og:image" content="https://eksworkshop.com/images/3-service-animated.gif" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="../../../icons/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../../icons/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../../icons/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../icons/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="../../../icons/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="../../../icons/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="../../../icons/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../icons/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="../../../icons/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="../../../icons/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="../../../icons/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="../../../icons/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="../../../icons/favicon-128.png" sizes="128x128" />
+    <meta name="application-name" content="Amazon EKS Workshop"/>
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="/icons/mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="/icons/mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="/icons/mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="/icons/mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="/icons/mstile-310x310.png" />
+
+    <link href="../../../mermaid/mermaid.css?1595237122" type="text/css" rel="stylesheet" />
+    <link href="../../../css/jquery-ui.min.css?1595237122" rel="stylesheet">
+    <script src="../../../js/jquery-ui-1.12.1.min.js?1595237122"></script>
+    <script src="../../../mermaid/mermaid.min.js?1595237122"></script>
+    <script>
+	var config = {
+        startOnLoad:true,
+        flowchart:{
+	    curve:'basis'
+        }
+      };
+        mermaid.initialize(config);
+    </script>
+
+  </head>
+  <body class="" data-url="/002_cvra/040_hands_on_guide/044_howtouse/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a href="../../../" title="Go home"><svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 30" width="60%" style="padding:20px 0px;"><defs><style>.cls-1{fill:#fff;}.cls-2{fill:#f90;fill-rule:evenodd;}</style></defs><title>AWS-Logo_White-Color</title><path class="cls-1" d="M14.09,10.85a4.7,4.7,0,0,0,.19,1.48,7.73,7.73,0,0,0,.54,1.19.77.77,0,0,1,.12.38.64.64,0,0,1-.32.49l-1,.7a.83.83,0,0,1-.44.15.69.69,0,0,1-.49-.23,3.8,3.8,0,0,1-.6-.77q-.25-.42-.51-1a6.14,6.14,0,0,1-4.89,2.3,4.54,4.54,0,0,1-3.32-1.19,4.27,4.27,0,0,1-1.22-3.2A4.28,4.28,0,0,1,3.61,7.75,6.06,6.06,0,0,1,7.69,6.46a12.47,12.47,0,0,1,1.76.13q.92.13,1.91.36V5.73a3.65,3.65,0,0,0-.79-2.66A3.81,3.81,0,0,0,7.86,2.3a7.71,7.71,0,0,0-1.79.22,12.78,12.78,0,0,0-1.79.57,4.55,4.55,0,0,1-.58.22l-.26,0q-.35,0-.35-.52V2a1.09,1.09,0,0,1,.12-.58,1.2,1.2,0,0,1,.47-.35A10.88,10.88,0,0,1,5.77.32,10.19,10.19,0,0,1,8.36,0a6,6,0,0,1,4.35,1.35,5.49,5.49,0,0,1,1.38,4.09ZM7.34,13.38a5.36,5.36,0,0,0,1.72-.31A3.63,3.63,0,0,0,10.63,12,2.62,2.62,0,0,0,11.19,11a5.63,5.63,0,0,0,.16-1.44v-.7a14.35,14.35,0,0,0-1.53-.28,12.37,12.37,0,0,0-1.56-.1,3.84,3.84,0,0,0-2.47.67A2.34,2.34,0,0,0,5,11a2.35,2.35,0,0,0,.61,1.76A2.4,2.4,0,0,0,7.34,13.38Zm13.35,1.8a1,1,0,0,1-.64-.16,1.3,1.3,0,0,1-.35-.65L15.81,1.51a3,3,0,0,1-.15-.67.36.36,0,0,1,.41-.41H17.7a1,1,0,0,1,.65.16,1.4,1.4,0,0,1,.33.65l2.79,11,2.59-11A1.17,1.17,0,0,1,24.39.6a1.1,1.1,0,0,1,.67-.16H26.4a1.1,1.1,0,0,1,.67.16,1.17,1.17,0,0,1,.32.65L30,12.39,32.88,1.25A1.39,1.39,0,0,1,33.22.6a1,1,0,0,1,.65-.16h1.54a.36.36,0,0,1,.41.41,1.36,1.36,0,0,1,0,.26,3.64,3.64,0,0,1-.12.41l-4,12.86a1.3,1.3,0,0,1-.35.65,1,1,0,0,1-.64.16H29.25a1,1,0,0,1-.67-.17,1.26,1.26,0,0,1-.32-.67L25.67,3.64,23.11,14.34a1.26,1.26,0,0,1-.32.67,1,1,0,0,1-.67.17Zm21.36.44a11.28,11.28,0,0,1-2.56-.29,7.44,7.44,0,0,1-1.92-.67,1,1,0,0,1-.61-.93v-.84q0-.52.38-.52a.9.9,0,0,1,.31.06l.42.17a8.77,8.77,0,0,0,1.83.58,9.78,9.78,0,0,0,2,.2,4.48,4.48,0,0,0,2.43-.55,1.76,1.76,0,0,0,.86-1.57,1.61,1.61,0,0,0-.45-1.16A4.29,4.29,0,0,0,43,9.22l-2.41-.76A5.15,5.15,0,0,1,38,6.78a3.94,3.94,0,0,1-.83-2.41,3.7,3.7,0,0,1,.45-1.85,4.47,4.47,0,0,1,1.19-1.37A5.27,5.27,0,0,1,40.51.29,7.4,7.4,0,0,1,42.6,0a8.87,8.87,0,0,1,1.12.07q.57.07,1.08.19t.95.26a4.27,4.27,0,0,1,.7.29,1.59,1.59,0,0,1,.49.41.94.94,0,0,1,.15.55v.79q0,.52-.38.52a1.76,1.76,0,0,1-.64-.2,7.74,7.74,0,0,0-3.2-.64,4.37,4.37,0,0,0-2.21.47,1.6,1.6,0,0,0-.79,1.48,1.58,1.58,0,0,0,.49,1.18,4.94,4.94,0,0,0,1.83.92L44.55,7a5.08,5.08,0,0,1,2.57,1.6A3.76,3.76,0,0,1,47.9,11a4.21,4.21,0,0,1-.44,1.93,4.4,4.4,0,0,1-1.21,1.47,5.43,5.43,0,0,1-1.85.93A8.25,8.25,0,0,1,42.05,15.62Z"></path><path class="cls-2" d="M45.19,23.81C39.72,27.85,31.78,30,25,30A36.64,36.64,0,0,1,.22,20.57c-.51-.46-.06-1.09.56-.74A49.78,49.78,0,0,0,25.53,26.4,49.23,49.23,0,0,0,44.4,22.53C45.32,22.14,46.1,23.14,45.19,23.81Z"></path><path class="cls-2" d="M47.47,21.21c-.7-.9-4.63-.42-6.39-.21-.53.06-.62-.4-.14-.74,3.13-2.2,8.27-1.57,8.86-.83s-.16,5.89-3.09,8.35c-.45.38-.88.18-.68-.32C46.69,25.8,48.17,22.11,47.47,21.21Z"></path></svg></a>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="../../../js/lunr.min.js?1595237122"></script>
+<script type="text/javascript" src="../../../js/auto-complete.js?1595237122"></script>
+<script type="text/javascript">
+    
+        var baseurl = "";
+    
+</script>
+<script type="text/javascript" src="../../../js/search.js?1595237122"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+ 
+  
+    
+    
+    
+    <li data-nav-id="/001_iot_simulator/" title="创建车辆设备模拟器" class="dd-item 
+        
+        
+        ">
+      <a href="../../../001_iot_simulator/">
+          创建车辆设备模拟器
+          
+          
+      </a>
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+    
+    
+    <li data-nav-id="/001_iot_simulator/010_introduction/" title="系统架构" class="dd-item 
+        
+        
+        ">
+      <a href="../../../001_iot_simulator/010_introduction/">
+          系统架构
+          
+            
+              <i class="fas fa-caret-right"></i>
+            
+          
+          
+      </a>
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+    
+    
+    <li data-nav-id="/001_iot_simulator/010_introduction/architecture/" title="架构描述" class="dd-item 
+        
+        
+        ">
+      <a href="../../../001_iot_simulator/010_introduction/architecture/">
+          架构描述
+          
+          
+      </a>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    
+    
+    <li data-nav-id="/001_iot_simulator/010_introduction/basics/" title="组件介绍" class="dd-item 
+        
+        
+        ">
+      <a href="../../../001_iot_simulator/010_introduction/basics/">
+          组件介绍
+          
+          
+      </a>
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    
+    
+    <li data-nav-id="/001_iot_simulator/020_hands_on_guide/" title="部署说明" class="dd-item 
+        
+        
+        ">
+      <a href="../../../001_iot_simulator/020_hands_on_guide/">
+          部署说明
+          
+            
+              <i class="fas fa-caret-right"></i>
+            
+          
+          
+      </a>
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+    
+    
+    <li data-nav-id="/001_iot_simulator/020_hands_on_guide/prerequest/" title="准备工作" class="dd-item 
+        
+        
+        ">
+      <a href="../../../001_iot_simulator/020_hands_on_guide/prerequest/">
+          准备工作
+          
+            
+              <i class="fas fa-caret-right"></i>
+            
+          
+          
+      </a>
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/001_iot_simulator/020_hands_on_guide/prerequest/authing/" title="创建认证" class="dd-item ">
+        <a href="../../../001_iot_simulator/020_hands_on_guide/prerequest/authing/">
+        创建认证
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/001_iot_simulator/020_hands_on_guide/prerequest/mapboxtoken/" title="获取 Mapbox Token" class="dd-item ">
+        <a href="../../../001_iot_simulator/020_hands_on_guide/prerequest/mapboxtoken/">
+        获取 Mapbox Token
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    
+    
+    <li data-nav-id="/001_iot_simulator/020_hands_on_guide/launchstack/" title="快速部署" class="dd-item 
+        
+        
+        ">
+      <a href="../../../001_iot_simulator/020_hands_on_guide/launchstack/">
+          快速部署
+          
+          
+      </a>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    
+    
+    <li data-nav-id="/001_iot_simulator/020_hands_on_guide/howtouse/" title="系统使用" class="dd-item 
+        
+        
+        ">
+      <a href="../../../001_iot_simulator/020_hands_on_guide/howtouse/">
+          系统使用
+          
+          
+      </a>
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    
+    
+    <li data-nav-id="/002_cvra/" title="AWS 车联网实验" class="dd-item 
+        parent
+        
+        ">
+      <a href="../../../002_cvra/">
+          AWS 车联网实验
+          
+          
+      </a>
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+    
+    
+    <li data-nav-id="/002_cvra/030_introduction/" title="系统架构" class="dd-item 
+        
+        
+        ">
+      <a href="../../../002_cvra/030_introduction/">
+          系统架构
+          
+            
+              <i class="fas fa-caret-right"></i>
+            
+          
+          
+      </a>
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+    
+    
+    <li data-nav-id="/002_cvra/030_introduction/architecture/" title="架构描述" class="dd-item 
+        
+        
+        ">
+      <a href="../../../002_cvra/030_introduction/architecture/">
+          架构描述
+          
+          
+      </a>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    
+    
+    <li data-nav-id="/002_cvra/030_introduction/basics/" title="组件介绍" class="dd-item 
+        
+        
+        ">
+      <a href="../../../002_cvra/030_introduction/basics/">
+          组件介绍
+          
+          
+      </a>
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    
+    
+    <li data-nav-id="/002_cvra/040_hands_on_guide/" title="部署说明" class="dd-item 
+        parent
+        
+        ">
+      <a href="../../../002_cvra/040_hands_on_guide/">
+          部署说明
+          
+            
+              <i class="fas fa-caret-down"></i>
+            
+          
+          
+      </a>
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+    
+    
+    <li data-nav-id="/002_cvra/040_hands_on_guide/041_prerequest/" title="准备工作" class="dd-item 
+        
+        
+        ">
+      <a href="../../../002_cvra/040_hands_on_guide/041_prerequest/">
+          准备工作
+          
+          
+      </a>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    
+    
+    <li data-nav-id="/002_cvra/040_hands_on_guide/042_launchstack/" title="快速部署" class="dd-item 
+        
+        
+        ">
+      <a href="../../../002_cvra/040_hands_on_guide/042_launchstack/">
+          快速部署
+          
+          
+      </a>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    
+    
+    <li data-nav-id="/002_cvra/040_hands_on_guide/043_datatrans/" title="数据存储及交互" class="dd-item 
+        
+        
+        ">
+      <a href="../../../002_cvra/040_hands_on_guide/043_datatrans/">
+          数据存储及交互
+          
+          
+      </a>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    
+    
+    <li data-nav-id="/002_cvra/040_hands_on_guide/044_howtouse/" title="系统使用" class="dd-item 
+        parent
+        active
+        ">
+      <a href="../../../002_cvra/040_hands_on_guide/044_howtouse/">
+          系统使用
+          
+          
+      </a>
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li> 
+                  <a class="padding" href="../../../authors"><i class='fas fa-users'></i> Authors</a>
+              </li>
+          
+              <li> 
+                  <a class="padding" href="https://github.com/Kervin-AWS/workshop-IOT_Simulator"><i class='fab fa-github'></i> GitHub Project</a>
+              </li>
+          
+              <li> 
+                  <a class="padding" href="mailto:huyikai@amazon.com"><i class='fas fa-envelope'></i> Have questions?</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="footer">
+      <left>
+    <section class="copyright">&copy; 2020 Amazon Web Services, Inc. or its Affiliates. All rights reserved.<section>
+</left>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                  
+                  
+                  
+                  <div id="top-github-link">
+                    <a class="github-link" title='Edit this page' href="https://github.com/aws-samples/eks-workshop/edit/main/content/002_cvra/040_hands_on_guide/044_HowToUse/_index.md" target="blank">
+                      <i class="fas fa-code-branch"></i>
+                      <span id="top-github-link-text">Edit this page</span>
+                    </a>
+                  </div>
+                  
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='../../../'>AWS 车联网实验</a> > <a href='../../../002_cvra/'>AWS 车联网实验</a> > <a href='../../../002_cvra/040_hands_on_guide/'>部署说明</a> > 系统使用
+          
+         
+          
+         
+          
+         
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#模拟车辆行驶">模拟车辆行驶</a></li>
+<li><a href="#api-gateway">API Gateway</a>
+<ul>
+<li><a href="#api-接口">API 接口</a></li>
+</ul></li>
+<li><a href="#使用-restful-api-工具进行测试">使用 Restful API 工具进行测试</a>
+<ul>
+<li><a href="#postman">Postman</a></li>
+<li><a href="#swagger-ui">Swagger UI</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              系统使用
+            </h1>
+          
+
+        
+
+
+
+
+	
+
+<h2 id="模拟车辆行驶">模拟车辆行驶</h2>
+
+<p>由于本解决方案专注于车联网中云端部分的功能实现。而对于车端的数据发送则建议您借助于“物联网设备模拟器解决方案”中的汽车功能模块发送车辆模拟行驶数据。</p>
+
+<p>关于物联网设备模拟器解决方案的部署，请参考 (<a href="https://www.amazonaws.cn/solutions/iot-device-simulator/" target="_blank">https://www.amazonaws.cn/solutions/iot-device-simulator/</a>)</p>
+
+<p><img src="../../../images/cvra/009.png" alt="Image" /></p>
+
+<p>或者自己开发脚本或程序按照如下的数据格式发送模拟数据。</p>
+
+<p>在“物联网设备模拟器”中【汽车】模块，发送模拟数据格式如下：</p>
+
+<table>
+<thead>
+<tr>
+<th>变量</th>
+<th>含义</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>vehicle_speed_mean</td>
+<td>车辆速度</td>
+</tr>
+
+<tr>
+<td>engine_speed_mean</td>
+<td>发动机转速</td>
+</tr>
+
+<tr>
+<td>torque_at_transmission_mean</td>
+<td>扭矩</td>
+</tr>
+
+<tr>
+<td>oil_temp_mean</td>
+<td>油温</td>
+</tr>
+
+<tr>
+<td>accelerator_pedal_position_mean</td>
+<td>加速踏板位置</td>
+</tr>
+
+<tr>
+<td>brake_mean</td>
+<td>刹车踏板力度</td>
+</tr>
+
+<tr>
+<td>high_speed_duration</td>
+<td>高速时长</td>
+</tr>
+
+<tr>
+<td>high_acceleration_event</td>
+<td>急加速事件</td>
+</tr>
+
+<tr>
+<td>high_braking_event</td>
+<td>急减速事件</td>
+</tr>
+
+<tr>
+<td>idle_duration</td>
+<td>怠速时长</td>
+</tr>
+
+<tr>
+<td>start_time</td>
+<td>驾驶开始时间</td>
+</tr>
+
+<tr>
+<td>ignition_status</td>
+<td>点火状态</td>
+</tr>
+
+<tr>
+<td>brake_pedal_status</td>
+<td>刹车踏板状态</td>
+</tr>
+
+<tr>
+<td>transmission_gear_position</td>
+<td>档位</td>
+</tr>
+
+<tr>
+<td>odometer</td>
+<td>里程表数值</td>
+</tr>
+
+<tr>
+<td>fuel_level</td>
+<td>剩余油量</td>
+</tr>
+
+<tr>
+<td>fuel_consumed_since_restart</td>
+<td>本次驾驶油耗</td>
+</tr>
+
+<tr>
+<td>latitude</td>
+<td>经度</td>
+</tr>
+
+<tr>
+<td>longitude</td>
+<td>维度</td>
+</tr>
+
+<tr>
+<td>timestamp</td>
+<td>时间戳</td>
+</tr>
+
+<tr>
+<td>trip_id</td>
+<td>行程ID</td>
+</tr>
+
+<tr>
+<td>vin</td>
+<td>车辆ID</td>
+</tr>
+
+<tr>
+<td>end_time</td>
+<td>驾驶结束时间</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="api-gateway">API Gateway</h2>
+
+<h3 id="api-接口">API 接口</h3>
+
+<p>该方案借助 API Gateway 对外提供操作及查询服务，接口描述如下：</p>
+
+<p>|路径|方法|功能
+|/signin|post|提交用户名及密码，返回 JWT Token|
+|/vehicles|get|返回所有车辆信息|
+|/vehicles|post|创建新的车辆|
+|/vehicles/{vin}|get|根据输入参数车辆编码{vin}，返回车辆详细信息。|
+|/vehicles/{vin}/anomalies|get|返回某一辆车{vin}的所有异常驾驶记录|
+|/vehicles/{vin}/anomalies/{anomaly_id}|get|返回某一辆车{vin}的某一个异常驾驶记录{anomaly_id}详细信息|
+|/vehicles/{vin}/dtc|get|返回某一辆车{vin}的所有 DTC 故障代码|
+|/vehicles/{vin}/dtc/dtc_id|get|返回某一辆车{vin}中某一个DTC 代码{dtc_id}的详细信息|
+|/vehicles/{vin}/healthreports|get|返回某一辆车{vin}的所有健康报告|
+|/vehicles/{vin}/healthreports/{report_id}|get|返回某一辆车{vin}中某一个健康报告{report_id}的详细信息|
+|/vehicles/{vin}/trips|get|返回某一辆车{vin}的所有行驶记录|
+|/vehicles/{vin}/trips/{trip_id}|get|返回某一辆车{vin}中某一个行程{trip_id}的详细信息|</p>
+
+<h2 id="使用-restful-api-工具进行测试">使用 Restful API 工具进行测试</h2>
+
+<p>该解决方案部署完成后，只提供了 API Gateway 服务接口及 DynamoDB 表 ，S3 存储桶等数据存储服务。
+而没有提供一个可视化的界面供用户使用。为了便于您的使用，可以借助于 Postman 或 Swagger 这两款免费的API 调用工具进行测试。
+由于 API Gateway 提供相关服务导出为 Swagger 或 OpenAPI3 接口文件，所以用户可以从以下两种工具进行选择。在本指南中，仅以测试  Get /Vehicles 接口为例。</p>
+
+<h3 id="postman">Postman</h3>
+
+<p>借助于Postman，可以创建并执行任何REST，SOAP和GraphQL查询。如需获得更多关于 Postman的信息，请参考（<a href="https://www.postman.com/）。借助API" target="_blank">https://www.postman.com/）。借助API</a> Gateway 的 导出功能，可导出Connected Vehicle API 相关接口为 JSON 格式文件。然后把该 JSON 格式的文件导入 Postman。具体步骤如下：
+1. 进入 API Gateway → Stages → Prods → Export → Export as Swagger →选择JSON 格式, 复制 Json文件内容。
+    <img src="../../../images/cvra/010.png" alt="Image" />
+2. 在 Postman → Import → Raws Text, 粘贴 Json 文件内容，点击 【continue】。
+    <img src="../../../images/cvra/011.png" alt="Image" />
+3.  选择 Post /signin 接口， 在Body 标签页中选择 【raw】单选框，并且在下面的输入框输输入如下信息，模拟用户登录。</p>
+
+<pre><code>{&quot;userid&quot;:&quot;5ec6644b9eb9fe198b7f973e&quot;,&quot;password&quot;:&quot;a1ef50c2e6a5e31f0f5ddc4a8f0fad41&quot;}
+</code></pre>
+
+<p>userid 值可以是任意标志当前登录用户 id 的字符串，而 password则是在【部署说明】-&gt; 【前提】中，所生成的32位字符的字符串。
+    <img src="../../../images/cvra/012.png" alt="Image" /></p>
+
+<ol>
+<li><p>点击【 Send】按钮，返回JWT Token.</p>
+
+<pre><code>{
+&quot;jwttoken&quot;: &quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1ZWM2NjQ0YjllYjlmZTE5OGI3Zjk3M2UiLCJfaWQiOiI1ZWM2NjQ0YjllYjlmZTE5OGI3Zjk3M2UiLCJpYXQiOjE1OTEzMzc0NjIsImV4cCI6MTU5MTM0MTA2MiwiYXVkIjoiaHR0cDovL2F3c2Nvbm5lY3RlZHZlaGljbGUuY29tIiwiaXNzIjoiQVdTIENvbm5lY3RlZCBWZWhpY2xlIn0.p_W_JbQNi9wK-kC5iVpsMpA9W8HsfZP_nVssO-8Jr30&quot;
+}
+</code></pre></li>
+
+<li><p>测试Get /vehicles 接口: 选择 Get /vehicles 接口函数， 选择【Headers】 标签页 ，选择【Key: Authorization】 ，在 【Value】输入框输入返回 Jwttoken 内容。
+<img src="../../../images/cvra/013.png" alt="Image" /></p></li>
+
+<li><p>然后点击 【Send】 按钮。返回所有车辆数据。
+<img src="../../../images/cvra/014.png" alt="Image" /></p></li>
+</ol>
+
+<h3 id="swagger-ui">Swagger UI</h3>
+
+<p>关于 Swagger UI 的详情，请参考该链接。<a href="https://swagger.io/tools/swagger-ui/" target="_blank">https://swagger.io/tools/swagger-ui/</a> Swagger UI允许您可以以可视化的方式同API资源交互。 它可根据您的OpenAPI规范自动生成接口，并具有可视化文档，可简化后端实现和客户端使用。另外借助API Gateway 的 导出功能，可导出车辆网 API 相关接口（ JSON 格式文件）并导入 Swagger。</p>
+
+<p>示例界面如下：
+<img src="../../../images/cvra/015.png" alt="Image" /></p>
+
+<p>启动 Swagger
+1.  进入 API Gateway 控制台， 选择  Stages → Prods → Export → Export as Swagger →选择JSON 格式。
+2.  下载 JSON 文件并保存。假设该 JSON 文件 connected_vehicle_swagger.json 存储在 /Users/test/ 目录。
+3.  启动 Docker （请注意修改 /Users/test:/ 为您的目录名称）
+docker run -p 8080:8080 -e SWAGGER_JSON=/mnt/connected_vehicle_swagger.json -vpa /Users/test:/mnt swaggerapi/swagger-ui
+4.  启动浏览器，输入 <a href="http://localhost:8080" target="_blank">http://localhost:8080</a>
+<img src="../../../images/cvra/016.png" alt="Image" />
+5.  由于Swagger 运行在本地，localhost 的域名同 API Gateway 的域名不一致。根据 CORS 的规则，无法使用 Swagger 直接 提交(Post)数据。为了演示方便，使用 Curl 命令提交认证信息到 API Gateway /signin 接口。 Post 数据格式包含 userid 及 password。假设API Gateway URL 为 <a href="https://5hjzv26t9a.execute-api.cn-northwest-1.amazonaws.com.cn/prod" target="_blank">https://5hjzv26t9a.execute-api.cn-northwest-1.amazonaws.com.cn/prod</a>
+6.  在API Gateway 中 /Signin 接口中 Post 操作提供用户认证的功能。用户首先需要提交用户 ID 及密码，密码就是OIDCAppSecretParameter 参数所输入的值，例如 a1ef50c2e6a5e31f0f5ddc4a8f0fad41
+7.  运行如下命令，得到 JWT Token。注意：请替换为您部署后得到的 API Gateway Endpoint。userid 值可以是任意标志当前登录用户 id 的字符串，而 password则是在【部署说明】-&gt; 【前提】中，所生成的32位字符的字符串。</p>
+
+<pre><code class="language-shell">curl -X POST &quot;https://5hjzv26t9a.execute-api.cn-northwest-1.amazonaws.com.cn/prod/signin&quot; -H &quot;accept: application/json&quot; -H &quot;Content-Type: application/json&quot; -d &quot;{ \&quot;userid\&quot;: \&quot;5ec6644b9eb9fe198b7f973e\&quot;, \&quot;password\&quot;: \&quot;a1ef50c2e6a5e31f0f5ddc4a8f0fad41\&quot;}&quot;
+</code></pre>
+
+<ol>
+<li><p>返回如下字符串。</p>
+
+<pre><code>{&quot;jwttoken&quot;:&quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1ZWM2NjQ0YjllYjlmZTE5OGI3Zjk3M2UiLCJfaWQiOiI1ZWM2NjQ0YjllYjlmZTE5OGI3Zjk3M2UiLCJpYXQiOjE1OTEzMzY2MzgsImV4cCI6MTU5MTM0MDIzOCwiYXVkIjoiaHR0cDovL2F3c2Nvbm5lY3RlZHZlaGljbGUuY29tIiwiaXNzIjoiQVdTIENvbm5lY3RlZCBWZWhpY2xlIn0.4UloXDdBvc2wzPI1oScUOCZAHwCCcUZawuKOEw1k1pY&quot;}
+</code></pre></li>
+
+<li><p>该 Token 的默认过期时间为1 小时，使用算法 HS256。</p></li>
+
+<li><p>使用 Jwt decode 解码（可使用工具 <a href="https://jwt.io/）。载荷信息显示如下：" target="_blank">https://jwt.io/）。载荷信息显示如下：</a></p>
+
+<pre><code>&quot;sub&quot;: &quot;5ec6644b9eb9fe198b7f973e&quot;,
+&quot;_id&quot;: &quot;5ec6644b9eb9fe198b7f973e&quot;,
+&quot;iat&quot;: 1591336638,
+&quot;exp&quot;: 1591340238,
+&quot;aud&quot;: &quot;http://awsconnectedvehicle.com&quot;,
+&quot;iss&quot;: &quot;AWS Connected Vehicle&quot;
+</code></pre></li>
+
+<li><p>选取 Jwttoken 对应值，其中sub字段表示当前 userid，iat字段为 token 颁发时间,exp 字段为token过期时间。aud及 iss 为演示目的使用。</p></li>
+
+<li><p>在 Swagger 中点击 Authorize 按钮
+<img src="../../../images/cvra/017.png" alt="Image" /></p></li>
+
+<li><p>在 Vechicle-service-authorizer(apikey)中的 Value 输入框输入 jwttoken 对应的值。
+示例</p>
+
+<pre><code>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1ZWM2NjQ0YjllYjlmZTE5OGI3Zjk3M2UiLCJfaWQiOiI1ZWM2NjQ0YjllYjlmZTE5OGI3Zjk3M2UiLCJpYXQiOjE1OTEzMzY2MzgsImV4cCI6MTU5MTM0MDIzOCwiYXVkIjoiaHR0cDovL2F3c2Nvbm5lY3RlZHZlaGljbGUuY29tIiwiaXNzIjoiQVdTIENvbm5lY3RlZCBWZWhpY2xlIn0.4UloXDdBvc2wzPI1oScUOCZAHwCCcUZawuKOEw1k1pY
+</code></pre>
+
+<p><img src="../../../images/cvra/018.png" alt="Image" /></p></li>
+
+<li><p>点击 authorize 按钮，保存后。点击 Close 按钮，关闭该窗口。</p></li>
+
+<li><p>测试 Get /vehicles 接口。
+<img src="../../../images/cvra/019.png" alt="Image" /></p></li>
+
+<li><p>点击 Try it out → Execute 按钮。
+<img src="../../../images/cvra/020.png" alt="Image" />
+返回所有车辆信息。</p></li>
+</ol>
+
+
+
+
+
+<footer class=" footline" >
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="../../../002_cvra/040_hands_on_guide/043_datatrans/" title="数据存储及交互"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="../../../002_cvra/040_hands_on_guide/041_prerequest/" title="准备工作" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="../../../js/clipboard.min.js?1595237122"></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1595237122"></script>
+    <script src="../../../js/perfect-scrollbar.jquery.min.js?1595237122"></script>
+    <script src="../../../js/jquery.sticky.js?1595237122"></script>
+    <script src="../../../js/featherlight.min.js?1595237122"></script>
+    <script src="../../../js/highlight.pack.js?1595237122"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="../../../js/modernizr.custom-3.6.0.js?1595237122"></script>
+    <script src="../../../js/learn.js?1595237122"></script>
+    <script src="../../../js/hugo-learn.js?1595237122"></script>
+
+    <link href="../../../mermaid/mermaid.css?1595237122" rel="stylesheet" />
+    <script src="../../../mermaid/mermaid.js?1595237122"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    <script>
+    if('serviceWorker' in navigator) {
+        navigator.serviceWorker
+            .register('/sw.js', { scope: '/' })
+            .then(function(registration) {
+                console.log('Service Worker Registered');
+            });
+
+        navigator.serviceWorker
+            .ready
+            .then(function(registration) {
+                console.log('Service Worker Ready');
+            });
+    }
+</script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-44634850-4', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+  </body>
+</html>

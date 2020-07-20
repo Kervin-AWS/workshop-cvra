@@ -44,11 +44,6 @@ pygmentsStyle = "tango"
 
 
 [[menu.shortcuts]]
-name = "<i class='fas fa-chalkboard'></i> 车联网 Workshop"
-url = "https://appmeshworkshop.com"
-weight = 1
-
-[[menu.shortcuts]]
 name = "<i class='fas fa-users'></i> Authors"
 url = "/authors"
 weight = 20

@@ -13,20 +13,20 @@
     <title>系统使用 :: Amazon EKS Workshop</title>
 
     
-    <link href="../../../css/nucleus.css?1595237624" rel="stylesheet">
-    <link href="../../../css/fontawesome-all.min.css?1595237624" rel="stylesheet">
-    <link href="../../../css/hybrid.css?1595237624" rel="stylesheet">
-    <link href="../../../css/featherlight.min.css?1595237624" rel="stylesheet">
-    <link href="../../../css/perfect-scrollbar.min.css?1595237624" rel="stylesheet">
-    <link href="../../../css/auto-complete.css?1595237624" rel="stylesheet">
-    <link href="../../../css/atom-one-dark-reasonable.css?1595237624" rel="stylesheet">
-    <link href="../../../css/theme.css?1595237624" rel="stylesheet">
-    <link href="../../../css/hugo-theme.css?1595237624" rel="stylesheet">
+    <link href="../../../css/nucleus.css?1595239292" rel="stylesheet">
+    <link href="../../../css/fontawesome-all.min.css?1595239292" rel="stylesheet">
+    <link href="../../../css/hybrid.css?1595239292" rel="stylesheet">
+    <link href="../../../css/featherlight.min.css?1595239292" rel="stylesheet">
+    <link href="../../../css/perfect-scrollbar.min.css?1595239292" rel="stylesheet">
+    <link href="../../../css/auto-complete.css?1595239292" rel="stylesheet">
+    <link href="../../../css/atom-one-dark-reasonable.css?1595239292" rel="stylesheet">
+    <link href="../../../css/theme.css?1595239292" rel="stylesheet">
+    <link href="../../../css/hugo-theme.css?1595239292" rel="stylesheet">
     
-      <link href="../../../css/theme-mine.css?1595237624" rel="stylesheet">
+      <link href="../../../css/theme-mine.css?1595239292" rel="stylesheet">
     
 
-    <script src="../../../js/jquery-3.3.1.min.js?1595237624"></script>
+    <script src="../../../js/jquery-3.3.1.min.js?1595239292"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -73,10 +73,10 @@
     <meta name="msapplication-wide310x150logo" content="/icons/mstile-310x150.png" />
     <meta name="msapplication-square310x310logo" content="/icons/mstile-310x310.png" />
 
-    <link href="../../../mermaid/mermaid.css?1595237624" type="text/css" rel="stylesheet" />
-    <link href="../../../css/jquery-ui.min.css?1595237624" rel="stylesheet">
-    <script src="../../../js/jquery-ui-1.12.1.min.js?1595237624"></script>
-    <script src="../../../mermaid/mermaid.min.js?1595237624"></script>
+    <link href="../../../mermaid/mermaid.css?1595239292" type="text/css" rel="stylesheet" />
+    <link href="../../../css/jquery-ui.min.css?1595239292" rel="stylesheet">
+    <script src="../../../js/jquery-ui-1.12.1.min.js?1595239292"></script>
+    <script src="../../../mermaid/mermaid.min.js?1595239292"></script>
     <script>
 	var config = {
         startOnLoad:true,
@@ -105,14 +105,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../../js/lunr.min.js?1595237624"></script>
-<script type="text/javascript" src="../../../js/auto-complete.js?1595237624"></script>
+<script type="text/javascript" src="../../../js/lunr.min.js?1595239292"></script>
+<script type="text/javascript" src="../../../js/auto-complete.js?1595239292"></script>
 <script type="text/javascript">
     
         var baseurl = "";
     
 </script>
-<script type="text/javascript" src="../../../js/search.js?1595237624"></script>
+<script type="text/javascript" src="../../../js/search.js?1595239292"></script>
 
     
   </div>
@@ -970,19 +970,89 @@
 
 <p>该方案借助 API Gateway 对外提供操作及查询服务，接口描述如下：</p>
 
-<p>|路径|方法|功能
-|/signin|post|提交用户名及密码，返回 JWT Token|
-|/vehicles|get|返回所有车辆信息|
-|/vehicles|post|创建新的车辆|
-|/vehicles/{vin}|get|根据输入参数车辆编码{vin}，返回车辆详细信息。|
-|/vehicles/{vin}/anomalies|get|返回某一辆车{vin}的所有异常驾驶记录|
-|/vehicles/{vin}/anomalies/{anomaly_id}|get|返回某一辆车{vin}的某一个异常驾驶记录{anomaly_id}详细信息|
-|/vehicles/{vin}/dtc|get|返回某一辆车{vin}的所有 DTC 故障代码|
-|/vehicles/{vin}/dtc/dtc_id|get|返回某一辆车{vin}中某一个DTC 代码{dtc_id}的详细信息|
-|/vehicles/{vin}/healthreports|get|返回某一辆车{vin}的所有健康报告|
-|/vehicles/{vin}/healthreports/{report_id}|get|返回某一辆车{vin}中某一个健康报告{report_id}的详细信息|
-|/vehicles/{vin}/trips|get|返回某一辆车{vin}的所有行驶记录|
-|/vehicles/{vin}/trips/{trip_id}|get|返回某一辆车{vin}中某一个行程{trip_id}的详细信息|</p>
+<table>
+<thead>
+<tr>
+<th>路径</th>
+<th>方法</th>
+<th>功能</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>/signin</td>
+<td>post</td>
+<td>提交用户名及密码，返回 JWT Token</td>
+</tr>
+
+<tr>
+<td>/vehicles</td>
+<td>get</td>
+<td>返回所有车辆信息</td>
+</tr>
+
+<tr>
+<td>/vehicles</td>
+<td>post</td>
+<td>创建新的车辆</td>
+</tr>
+
+<tr>
+<td>/vehicles/{vin}</td>
+<td>get</td>
+<td>根据输入参数车辆编码{vin}，返回车辆详细信息。</td>
+</tr>
+
+<tr>
+<td>/vehicles/{vin}/anomalies</td>
+<td>get</td>
+<td>返回某一辆车{vin}的所有异常驾驶记录</td>
+</tr>
+
+<tr>
+<td>/vehicles/{vin}/anomalies/{anomaly_id}</td>
+<td>get</td>
+<td>返回某一辆车{vin}的某一个异常驾驶记录{anomaly_id}详细信息</td>
+</tr>
+
+<tr>
+<td>/vehicles/{vin}/dtc</td>
+<td>get</td>
+<td>返回某一辆车{vin}的所有 DTC 故障代码</td>
+</tr>
+
+<tr>
+<td>/vehicles/{vin}/dtc/dtc_id</td>
+<td>get</td>
+<td>返回某一辆车{vin}中某一个DTC 代码{dtc_id}的详细信息</td>
+</tr>
+
+<tr>
+<td>/vehicles/{vin}/healthreports</td>
+<td>get</td>
+<td>返回某一辆车{vin}的所有健康报告</td>
+</tr>
+
+<tr>
+<td>/vehicles/{vin}/healthreports/{report_id}</td>
+<td>get</td>
+<td>返回某一辆车{vin}中某一个健康报告{report_id}的详细信息</td>
+</tr>
+
+<tr>
+<td>/vehicles/{vin}/trips</td>
+<td>get</td>
+<td>返回某一辆车{vin}的所有行驶记录</td>
+</tr>
+
+<tr>
+<td>/vehicles/{vin}/trips/{trip_id}</td>
+<td>get</td>
+<td>返回某一辆车{vin}中某一个行程{trip_id}的详细信息</td>
+</tr>
+</tbody>
+</table>
 
 <h2 id="使用-restful-api-工具进行测试">使用 Restful API 工具进行测试</h2>
 
@@ -1466,19 +1536,19 @@ docker run -p 8080:8080 -e SWAGGER_JSON=/mnt/connected_vehicle_swagger.json -vpa
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../../js/clipboard.min.js?1595237624"></script>
-    <script src="../../../js/perfect-scrollbar.min.js?1595237624"></script>
-    <script src="../../../js/perfect-scrollbar.jquery.min.js?1595237624"></script>
-    <script src="../../../js/jquery.sticky.js?1595237624"></script>
-    <script src="../../../js/featherlight.min.js?1595237624"></script>
-    <script src="../../../js/highlight.pack.js?1595237624"></script>
+    <script src="../../../js/clipboard.min.js?1595239292"></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1595239292"></script>
+    <script src="../../../js/perfect-scrollbar.jquery.min.js?1595239292"></script>
+    <script src="../../../js/jquery.sticky.js?1595239292"></script>
+    <script src="../../../js/featherlight.min.js?1595239292"></script>
+    <script src="../../../js/highlight.pack.js?1595239292"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../../js/modernizr.custom-3.6.0.js?1595237624"></script>
-    <script src="../../../js/learn.js?1595237624"></script>
-    <script src="../../../js/hugo-learn.js?1595237624"></script>
+    <script src="../../../js/modernizr.custom-3.6.0.js?1595239292"></script>
+    <script src="../../../js/learn.js?1595239292"></script>
+    <script src="../../../js/hugo-learn.js?1595239292"></script>
 
-    <link href="../../../mermaid/mermaid.css?1595237624" rel="stylesheet" />
-    <script src="../../../mermaid/mermaid.js?1595237624"></script>
+    <link href="../../../mermaid/mermaid.css?1595239292" rel="stylesheet" />
+    <script src="../../../mermaid/mermaid.js?1595239292"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

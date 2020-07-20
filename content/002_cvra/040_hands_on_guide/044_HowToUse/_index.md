@@ -47,7 +47,8 @@ weight: 40
 ### API 接口
 该方案借助 API Gateway 对外提供操作及查询服务，接口描述如下：
 
-|路径|方法|功能
+|路径|方法|功能|
+| ------ | ------ | ----------- | 
 |/signin|post|提交用户名及密码，返回 JWT Token|
 |/vehicles|get|返回所有车辆信息|
 |/vehicles|post|创建新的车辆|
